@@ -1,0 +1,164 @@
+:root {
+  --chocolate: #312614;
+  --gerua: #b7832f;
+  --grey: #707070;
+  --white: #fff;
+  --color1: #212614;
+}
+/* Font sizes
+h1: 3rem
+h2: 1.5rem
+body: 1.125rem */
+
+body {
+  font-size: 1.15rem;
+  color: var(--grey);
+  margin: 0;
+}
+
+/* typography */
+h1 {
+  font-size: 3rem;
+  color: var(--color1);
+  text-align: center;
+}
+h1 span {
+  color: var(--gerua);
+}
+h2 {
+  font-size: 1.5rem;
+}
+
+/*layout*/
+img {
+  max-width: 100%; /*100% of it's parent, that is container class*/
+}
+.container {
+  width: 65%;
+  max-width: 851px;
+  /* why 65% and 851px? well the image is 851px almost 65% of the current screen, so having 65% will make sure the image does not strech and lose it's quality */
+  margin: 0 auto;
+}
+
+.columns {
+  display: flex;
+  margin: 1em 0;
+  /* justify-content: space-evenly;  */
+  /* to hahe even amount of space for all columns left right */
+  /* justify-content: space-around;  */
+  /* to have adjusted amount of space between columns, spaces between middle columns will be bigger than the spaces of the left of left column and spaces of right side of right columns  */
+  justify-content: space-between;
+  /* space will be applied around the middle columns */
+  /* border: 5px solid red; */ /*test code*/
+  align-items: flex-start;
+}
+
+/* background color for right sided columns */
+.col-bg {
+  background-color: var(--chocolate);
+  color: var(--white);
+  padding: 1em;
+}
+
+/*to have different widths of columns defined more classes*/
+.col-1 {
+  /* width: 25%; */
+  width: 20%; /*reduction of 5% just to make the space in between columns visible, when justify-content is applied */
+}
+.col-2 {
+  /* width: 50%; */
+  width: 45%;
+}
+.col-3 {
+  /* width: 75%; */
+  width: 70%;
+}
+
+/* ###### ---- Responsive: media queries basic ---- ###### */
+/* ### min-width ### */
+/* from a minimum-width 500 and bigger */
+/* @media (min-width: 500px) {
+  body {
+    background-color: purple;
+  }
+} */
+/* from a minimum-width 650 and bigger */
+/* @media (min-width: 650px) {
+  body {
+    background-color: orange;
+  }
+} */
+
+/* ### order of them? ### */
+/* change the order and check by changing the size of screen, 650px and bigger wont be applied. Why? cuase order matters. */
+/* @media (min-width: 650px) {
+  body {
+    background-color: orange;
+  }
+} */
+
+/* @media (min-width: 500px) {
+  body {
+    background-color: purple;
+  }
+} */
+
+/*order matters here, the last condition overwrites the previous one if the previous one's condition is fulfilled by the last one, here 650 and bigger is also included in the condition of 500 and bigger. So putting 500 and bigger at the last will make 650 and bigger useless. */
+/* Common example: below second p overwrites the first p class */
+/* p {
+  color:black
+} */
+/* p {
+  color:red
+} */
+
+/* ### max-width ### */
+/* if only max-width 850px used: it means from 0 to 850px appliy the logic */
+
+/* ### min-width and max-width together ### */
+/* from minimum of 700px, up to a width of 850 px */
+/* @media (min-width: 800px) and (max-width: 1000px) {
+  body {
+    background-color: green;
+  }
+} */
+
+/* ### Orientation: usefull when website is accessed by tablet or in mobile they switch to landscape view ### */
+/* @media (min-width: 500px) and (orientation: landscape) {
+  body {
+    background-color: green;
+  }
+} */
+
+/* ###### Media queries for this site ##### */
+@media (max-width: 600px) {
+  .columns {
+    flex-direction: column;
+  }
+}
+
+/* order matters, if you write media queries at the top, it will be overwritten by the default .col-1 or col-2 etc class definition, so always put media queries after the defaults */
+@media (max-width: 600px) {
+  /* instead of writing col-1,col2,col-3; only col works */
+  /* .col {
+    width: 100%;
+  } */
+
+  .col-1,
+  .col-2,
+  .col-3 {
+    width: 100%;
+  }
+}
+
+/* Having a single mediia queries for the same condition is better*/
+/* @media (max-width: 600px) {
+  .columns {
+    flex-direction: column;
+  }
+  .col-1,
+  .col-2,
+  .col-3 {
+    width: 100%;
+  }
+} */

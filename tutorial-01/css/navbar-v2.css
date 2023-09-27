@@ -1,0 +1,112 @@
+/* 
+
+ */
+:root {
+  --white: #f8f8f8;
+  --grey: #707070;
+  --lightblue: #1792d2;
+  --sweetblue: #143774;
+}
+body {
+  margin: 0;
+  font-family: "Ubuntu", sans-serif;
+}
+
+/* ============== Typography =============== */
+/* Note: By default all the headings are bold */
+h1 {
+  font-family: "Lora", serif;
+  font-weight: 400;
+  color: #143774;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.subtitle {
+  font-weight: 700;
+  /* 700 wight is almost equivalent to bold, sometimes designer, also devs might use bold. */
+  color: var(--lightblue);
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+/* ============== Layout =============== */
+.container {
+  width: 90%;
+  max-width: 900px;
+  /* border: 1px solid magenta; */
+  /* making the container centered with it's content */
+  margin: 0 auto;
+}
+
+/* we could have added this to the container, but we might use the same container in other places as well, so seprating the flex is better */
+.container-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+header {
+  /* all the text inside this container tag will be aligned to center position relative to their immediate parent class. For examaple: all the anchor text Home, about will be centered relative to their parent class li. When display:flex is being used a single li area becomes small, but still the home or about will be centered within the li itself, but not centered relative to header class. To visualise properly. turn of display flex from nav ul. Note: with display flex on, so to make the anchor home or about centered we can use justify-content peoprty of flexbox.*/
+
+  /* additional stuffs */
+  background-color: pink;
+  padding: 2em 0;
+}
+
+/* === Navigation ====*/
+nav {
+  /* border: 1px solid yellowgreen; */
+}
+
+nav ul {
+  /* border: 1px solid magenta; */
+  list-style: none;
+  /* resetting the default padding of ul */
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav li {
+  /* border: 1px dotted orange; */
+  /* note: margin on the right of Recent Posts navlink was looking ugly in version 2, only having margin on the left can solve it. */
+  /* margin: 0 1em; */
+  margin-left: 1em;
+}
+
+nav a {
+  /* border: 1px solid green; */
+  text-decoration: none;
+  color: var(--grey);
+  font-weight: 700;
+  padding: 0.25rem 0;
+}
+nav a:hover,
+nav a:focus {
+  color: var(--lightblue);
+}
+
+.current-page {
+  /* border: 1px solid var(--grey); */
+  border-bottom: 1px solid var(--grey);
+}
+
+/* I dont want my current page to change when hover or focus. */
+.current-page:hover {
+  color: var(--grey);
+}
+
+@media (max-width: 675px) {
+  .container-nav {
+    flex-direction: column;
+  }
+  header {
+    text-align: center;
+  }
+  nav ul {
+    flex-direction: column;
+  }
+  nav li {
+    margin: 0.5em 0;
+  }
+}

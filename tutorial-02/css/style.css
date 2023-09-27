@@ -1,0 +1,342 @@
+/* font-family: 'Lora', serif;
+font-family: 'Ubuntu', sans-serif; */
+:root {
+  --white: #f8f8f8;
+  --grey: #707070;
+  --lightblue: #1792d2;
+  --sweetblue: #143774;
+  --lightgray: #efefef;
+}
+body {
+  margin: 0;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 300;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+.image-full {
+  max-height: 300px;
+  width: 100%;
+  /* image looks chubier, use object-fit:cover to fix it; It will show a cropped version of image. */
+  object-fit: cover;
+  margin-bottom: 2em;
+}
+
+/* ============== Typography =============== */
+/* Note: By default all the headings are bold */
+h1,
+h2,
+h3 {
+  font-family: "Lora", serif;
+  font-weight: 400;
+  color: #143774;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+/* previous color of h3 will be overwritten */
+h3 {
+  color: var(--lightblue);
+}
+
+a {
+  color: var(--lightblue);
+}
+
+a:hover,
+a:focus {
+  color: var(--sweetblue);
+}
+
+strong {
+  /* By default it is bolder aka font-weight 400 which is regular(not light) */
+  /* font-weight: bolder; */
+  /* we want bold aka font-weight 700 */
+  font-weight: 700;
+}
+
+/* h1's subtitle */
+.subtitle {
+  font-weight: 700;
+  /* 700 wight is almost equivalent to bold, sometimes designer, also devs might use bold. */
+  color: var(--lightblue);
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+.article-title {
+  font-size: 1.5rem;
+}
+
+.article-read-more,
+.article-info {
+  font-size: 0.875rem;
+}
+
+.article-read-more {
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--lightblue);
+  /* additional */
+}
+
+.article-info {
+  margin: 2em 0;
+}
+
+.article-read-more:hover,
+.article-read-more:focus {
+  text-decoration: underline;
+  color: var(--sweetblue);
+}
+
+.widget-title,
+.widget-recent-post-title {
+  /* font-size: 1.125rem; */
+  /* Not sure between 1 or 1.125 */
+  font-size: 1rem;
+}
+
+.widget-title {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+}
+
+.widget-recent-post-title {
+  color: var(--sweetblue);
+}
+
+/* forcing them to be uppercase and adding spacing between letters */
+nav a,
+.subtitle,
+.widget-title,
+.article-read-more {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+/* .article-read-more {
+  letter-spacing: 0.05em;
+} */
+
+/* ============== Layout =============== */
+.container {
+  width: 90%;
+  max-width: 900px;
+  /* border: 1px solid magenta; */
+  /* making the container centered with it's content */
+  margin: 0 auto;
+}
+
+/* we could have added this to the container, but we might use the same container in other places as well, so seprating the flex is better */
+.container-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* same like container-nav, but sometimes container-nav might be different than con-flex */
+.container-flex {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+/* But images seems large, so need to write css for img, go avobe */
+
+header {
+  /* all the text inside this container tag will be aligned to center position relative to their immediate parent class. For examaple: all the anchor text Home, about will be centered relative to their parent class li. When display:flex is being used a single li area becomes small, but still the home or about will be centered within the li itself, but not centered relative to header class. To visualise properly. turn of display flex from nav ul. Note: with display flex on, so to make the anchor home or about centered we can use justify-content peoprty of flexbox.*/
+
+  /* additional stuffs */
+  background-color: pink;
+  padding: 2em 0;
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+footer {
+  background-color: var(--sweetblue);
+  color: var(--white);
+  padding: 2em 0;
+  text-align: center;
+}
+
+@media (min-width: 675px) {
+  main {
+    width: 70%;
+  }
+  aside {
+    width: 25%;
+
+    /* Images seems to be becoming so small when we reduce the width of screen, so set a min-width, so that it stops here. */
+    min-width: 200px;
+    /* Add 1em margin so that they both side does not seem like colliding */
+    margin-left: 1em;
+  }
+  /* 70+25=95%; 5% free for gap in between */
+  header {
+    text-align: left;
+  }
+  .container-flex {
+    flex-direction: row;
+  }
+}
+/* === Navigation ====*/
+nav {
+  /* border: 1px solid yellowgreen; */
+}
+
+nav ul {
+  /* border: 1px solid magenta; */
+  list-style: none;
+  /* resetting the default padding of ul */
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+nav li {
+  margin: 0.5em 0;
+}
+
+nav a {
+  /* border: 1px solid green; */
+  text-decoration: none;
+  color: var(--grey);
+  font-weight: 700;
+  padding: 0.25em 0;
+}
+nav a:hover,
+nav a:focus {
+  color: var(--lightblue);
+}
+
+.current-page {
+  /* border: 1px solid var(--grey); */
+  border-bottom: 1px solid var(--grey);
+}
+
+/* I dont want my current page to change when hover or focus. */
+.current-page:hover {
+  color: var(--grey);
+}
+
+@media (min-width: 675px) {
+  nav li {
+    margin-left: 1em;
+  }
+  nav ul {
+    flex-direction: row;
+  }
+}
+
+/* article */
+.article-featured {
+  padding-bottom: 2em;
+  border-bottom: 1px solid var(--grey);
+  margin-bottom: 2em;
+  /* background: pink; */
+}
+
+.article-recent {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+
+.article-recent-main {
+  order: 2;
+}
+.article-recent-secondary {
+  order: 1;
+}
+
+/* We want to position title after the image and info, How? Using order, but to make the order work we need to add display flex property. If we want this order work for small screen <675, also add the following code accordingly.*/
+/* ___start__ */
+.article-featured {
+  display: flex;
+  flex-direction: column;
+}
+
+.article-info {
+  order: -1;
+  /* Note: article-info order wont be applicable for articles with class .article-recent , because their display property is not flex. */
+}
+
+.article-image {
+  order: -2;
+}
+/* ___end___ */
+
+/* Not recommended to use negative margin, might cause weird behaviour. */
+@media (min-width: 550px) {
+  /* Negative margin is cool for overlaping and do some stuffs, but this can behave weirdly, try to make the screen with small and text might overlap and that looks ugly. */
+  /* .article-recent-main {
+    margin-top: -3.4em;
+  }
+  .article-info {
+    text-align: right;
+  } */
+}
+
+@media (min-width: 675px) {
+  .article-recent {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .article-recent-main {
+    width: 68%;
+  }
+  .article-recent-secondary {
+    width: 30%;
+  }
+  /* 68+30=98%; 2% free for gap in between */
+
+  /* Now in large screen, i want recent articles imgaes to be little large */
+  .article-image {
+    min-height: 200px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    /* by default center position */
+  }
+}
+
+/* === widget === */
+.sidebar-widget {
+  border: 20px solid var(--lightgray);
+  /* border: 20px solid var(--sweetblue); */
+  margin-bottom: 2em;
+}
+
+/* we want to change bring the image order up then the title, How? use order. First make the display flex then order will work. */
+/* _start_ */
+.widget-recent-post {
+  display: flex;
+  /* By default flex direction row, so change it to column */
+  flex-direction: column;
+}
+
+.widget-image {
+  order: -1;
+}
+/* _end_ */
+
+/* we want to add a border bottom after each widget recent post */
+.widget-recent-post {
+  border-bottom: 1px solid var(--grey);
+  margin-bottom: 1em;
+}
+
+/* But we dont want to add border bottom for last child. */
+.widget-recent-post:last-child {
+  border: 0;
+  margin: 0;
+}

@@ -1,0 +1,180 @@
+/* font-family: 'Lora', serif;
+font-family: 'Ubuntu', sans-serif; */
+:root {
+  --white: #f8f8f8;
+  --grey: #707070;
+  --lightblue: #1792d2;
+  --sweetblue: #143774;
+}
+body {
+  margin: 0;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 300;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+/* ============== Typography =============== */
+/* Note: By default all the headings are bold */
+h1,
+h2,
+h3 {
+  font-family: "Lora", serif;
+  font-weight: 400;
+}
+
+h1 {
+  color: #143774;
+  font-size: 2rem;
+  margin: 0;
+}
+
+a {
+  color: var(--lightblue);
+}
+
+a:hover,
+a:focus {
+  color: var(--sweetblue);
+}
+
+strong {
+  /* By default it is bolder aka font-weight 400 which is regular(not light) */
+  /* font-weight: bolder; */
+  /* we want bold aka font-weight 700 */
+  font-weight: 700;
+}
+/* h1's subtitle */
+.subtitle {
+  font-weight: 700;
+  /* 700 wight is almost equivalent to bold, sometimes designer, also devs might use bold. */
+  color: var(--lightblue);
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+.article-title {
+  font-size: 1.5rem;
+}
+
+.article-read-more,
+.article-info {
+  font-size: 0 0.875rem;
+}
+
+.article-read-more {
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--lightblue);
+  /* additional */
+  /*   
+  letter-spacing: 0.2rem;
+  text-transform: uppercase; */
+}
+
+.article-read-more:hover,
+.article-read-more:focus {
+  text-decoration: underline;
+  color: var(--sweetblue);
+}
+/* ============== Layout =============== */
+.container {
+  width: 90%;
+  max-width: 900px;
+  /* border: 1px solid magenta; */
+  /* making the container centered with it's content */
+  margin: 0 auto;
+}
+
+/* we could have added this to the container, but we might use the same container in other places as well, so seprating the flex is better */
+.container-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* same like container-nav, but sometimes container-nav might be different than con-flex */
+.container-flex {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+/* But images seems large, so need to write css for img, go avobe */
+
+header {
+  /* all the text inside this container tag will be aligned to center position relative to their immediate parent class. For examaple: all the anchor text Home, about will be centered relative to their parent class li. When display:flex is being used a single li area becomes small, but still the home or about will be centered within the li itself, but not centered relative to header class. To visualise properly. turn of display flex from nav ul. Note: with display flex on, so to make the anchor home or about centered we can use justify-content peoprty of flexbox.*/
+
+  /* additional stuffs */
+  background-color: pink;
+  padding: 2em 0;
+  text-align: center;
+}
+
+/* === Navigation ====*/
+nav {
+  /* border: 1px solid yellowgreen; */
+}
+
+nav ul {
+  /* border: 1px solid magenta; */
+  list-style: none;
+  /* resetting the default padding of ul */
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav li {
+  /* border: 1px dotted orange; */
+  /* note: margin on the right of Recent Posts navlink was looking ugly in version 2, only having margin on the left can solve it. */
+  /* margin: 0 1em; */
+  margin-left: 1em;
+}
+
+nav a {
+  /* border: 1px solid green; */
+  text-decoration: none;
+  color: var(--grey);
+  font-weight: 700;
+  padding: 0.25rem 0;
+}
+nav a:hover,
+nav a:focus {
+  color: var(--lightblue);
+}
+
+.current-page {
+  /* border: 1px solid var(--grey); */
+  border-bottom: 1px solid var(--grey);
+}
+
+/* I dont want my current page to change when hover or focus. */
+.current-page:hover {
+  color: var(--grey);
+}
+
+@media (min-width: 675px) {
+  main {
+    width: 75%;
+  }
+  aside {
+    width: 25%;
+  }
+
+  .container-flex {
+    flex-direction: row;
+  }
+  header {
+    text-align: left;
+  }
+}
+@media (max-width: 675px) {
+  nav ul {
+    flex-direction: column;
+  }
+  nav li {
+    margin: 0.5em 0;
+  }
+}
